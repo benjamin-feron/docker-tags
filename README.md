@@ -19,7 +19,7 @@ $ sudo ln -s $PWD/docker-tags /usr/bin/docker-tags
 $ docker-tags <REPOSITORY_NAME>
 ```
 
-## Docker usage
+## Usage with Docker
 
 ```bash
 $ docker run --rm benjaminferon/docker-tags <REPOSITORY_NAME>
