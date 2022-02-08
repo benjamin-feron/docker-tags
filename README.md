@@ -30,12 +30,12 @@ $ docker run --rm benjaminferon/docker-tags <REPOSITORY_NAME>
 ```
 Usage: docker-tags REPOSITORY
 
-  REPOSITORY:         Name of repository.
+  REPOSITORY:          Name of repository.
   
   Options:
-    -h, --hide-page   Don't show pages.
-    --help            Show help
+    -h, --hide-pages   Don't show pages.
+    --help             Show help
 
-  Examples:           docker-tags php
-                      docker-tags ubuntu/bind9
+  Examples:            docker-tags php
+                       docker-tags ubuntu/bind9
 ```

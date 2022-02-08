@@ -3,14 +3,14 @@
 show_help () {
   echo "Usage: docker-tags REPOSITORY
 
-  REPOSITORY:         Name of repository.
-  
-  Options:
-    -h, --hide-page   Don't show pages.
-    --help            Show help
+  REPOSITORY:          Name of repository.
 
-  Examples:           docker-tags php
-                      docker-tags ubuntu/bind9"
+  Options:
+    -h, --hide-pages   Don't show pages.
+    --help             Show help
+
+  Examples:            docker-tags php
+                       docker-tags ubuntu/bind9"
 }
 
 # Don't understand why but whether the repository name contain "/" in its name, registry address must be diffrent !
