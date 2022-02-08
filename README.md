@@ -33,7 +33,7 @@ Usage: docker-tags REPOSITORY
   REPOSITORY:          Name of repository.
   
   Options:
-    -h, --hide-pages   Don't show pages.
+    -h, --hide-pages   Don't show pagination.
     --help             Show help.
 
   Examples:            docker-tags php
