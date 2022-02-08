@@ -1,0 +1,74 @@
+#!/bin/bash
+
+show_help () {
+  echo "Usage: docker-tags REPOSITORY
+  REPOSITORY: Name of repository.
+  Options:
+    --help    Show help
+
+  Examples:   docker-tags php
+              docker-tags ubuntu/bind9"
+}
+
+# Don't understand why but whether the repository name contain "/" in its name, registry address must be diffrent !
+# If someone has an idea...
+
+REGISTRY_FOR_REPO_WITHOUT_SLASH="https://registry.hub.docker.com"
+REGISTRY_FOR_REPO_WITH_SLASH="https://hub.docker.com"
+PAGE_SIZE=100
+
+while :; do
+  case $1 in
+    --help)
+      show_help
+      exit
+      ;;
+    -?*)
+      printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+      ;;
+    *)
+      break
+  esac
+  shift
+done
+
+REPO="$1"
+shift
+
+throw_error () {
+  MSG=$1
+  EXIT=$2
+  STD_MSG="Command stopped"
+  printf "\033[0;31m$MSG\033[0m\n"
+  echo "$STD_MSG"
+  if $EXIT ; then
+    exit 1
+  fi
+}
+
+# Requirements
+command -v curl >/dev/null 2>&1 || throw_error "curl is not installed. Aborting."
+command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
+[ -z "$REPO" ] && throw_error "Please specify a repository name (ie. docker-tags php)"
+
+# Select registry depending of repository name
+if [[ ! "$REPO" =~ "/" ]]; then
+  url="$REGISTRY_FOR_REPO_WITHOUT_SLASH/v2/repositories/library/$REPO/tags"
+else
+  url="$REGISTRY_FOR_REPO_WITH_SLASH/v2/repositories/$REPO/tags"
+fi
+
+# Get tags count
+count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
+
+# Calculate page count
+page_count=$(((count / PAGE_SIZE) + (count % PAGE_SIZE > 0)))
+
+# Loop through pages
+i=1
+while [ $i -lt $((page_count + 1)) ]
+do
+   echo "Page $i/$page_count"
+   curl "$url/?page=$i&page_size=$PAGE_SIZE" 2>/dev/null | jq '."results"[]["name"]'
+   ((i+=1))
+done
