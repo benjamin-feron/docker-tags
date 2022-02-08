@@ -16,13 +16,13 @@ $ sudo ln -s $PWD/docker-tags /usr/bin/docker-tags
 ## Usage
 
 ```bash
-$ docker-tags <REPOSITORY_NAME>
+$ docker-tags <REPOSITORY>
 ```
 
 ## Usage with Docker
 
 ```bash
-$ docker run --rm benjaminferon/docker-tags <REPOSITORY_NAME>
+$ docker run --rm benjaminferon/docker-tags <REPOSITORY>
 ```
 
 ## All options
