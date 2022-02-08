@@ -3,7 +3,7 @@
 show_help () {
   echo "Retrieve tag list of a Docker repository.
   
-  Usage: docker-tags REPOSITORY
+  Usage: docker-tags <REPOSITORY>
 
   REPOSITORY:          Name of repository.
 
