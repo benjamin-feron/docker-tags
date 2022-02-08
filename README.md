@@ -34,7 +34,7 @@ Usage: docker-tags REPOSITORY
   
   Options:
     -h, --hide-pages   Don't show pages.
-    --help             Show help
+    --help             Show help.
 
   Examples:            docker-tags php
                        docker-tags ubuntu/bind9
