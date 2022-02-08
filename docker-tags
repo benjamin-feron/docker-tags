@@ -1,7 +1,9 @@
 #!/bin/bash
 
 show_help () {
-  echo "Usage: docker-tags REPOSITORY
+  echo "Retrieve tag list of a Docker repository.
+  
+  Usage: docker-tags REPOSITORY
 
   REPOSITORY:          Name of repository.
 
