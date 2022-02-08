@@ -69,6 +69,6 @@ i=1
 while [ $i -lt $((page_count + 1)) ]
 do
    echo "Page $i/$page_count"
-   curl "$url/?page=$i&page_size=$PAGE_SIZE" 2>/dev/null | jq '."results"[]["name"]'
+   curl "$url/?page=$i&page_size=$PAGE_SIZE" 2>/dev/null | jq -r '."results"[]["name"]'
    ((i+=1))
 done
