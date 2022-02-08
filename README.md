@@ -28,7 +28,7 @@ $ docker run --rm benjaminferon/docker-tags <REPOSITORY>
 ## All options
 
 ```
-Usage: docker-tags REPOSITORY
+Usage: docker-tags <REPOSITORY>
 
   REPOSITORY:          Name of repository.
   
