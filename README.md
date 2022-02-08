@@ -24,3 +24,18 @@ $ docker-tags <REPOSITORY_NAME>
 ```bash
 $ docker run --rm benjaminferon/docker-tags <REPOSITORY_NAME>
 ```
+
+## All options
+
+```
+Usage: docker-tags REPOSITORY
+
+  REPOSITORY:         Name of repository.
+  
+  Options:
+    -h, --hide-page   Don't show pages.
+    --help            Show help
+
+  Examples:           docker-tags php
+                      docker-tags ubuntu/bind9
+```
