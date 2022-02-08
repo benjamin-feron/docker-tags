@@ -1,6 +1,6 @@
 # docker-tags
 
-docker-tags is an utility that offer a simple way to retrieve tag list of a Docker repository.
+Retrieve tag list of a Docker repository.
 
 ## Repository
 
