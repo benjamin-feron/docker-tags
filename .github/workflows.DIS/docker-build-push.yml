@@ -18,18 +18,17 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: benjaminferon/docker-tags
-          tags: |
-            type=ref,event=tag
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
+      #-
+      #  name: Docker meta
+      #  id: meta
+      #  uses: docker/metadata-action@v3
+      #  with:
+      #    images: benjaminferon/docker-tags
+      #    tags: |
+      #      type=ref,event=tag
+      #      type=semver,pattern={{version}}
+      #      type=semver,pattern={{major}}.{{minor}}
+      #      type=semver,pattern={{major}}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -50,6 +49,6 @@ jobs:
           #platforms: linux/amd64,linux/arm64,linux/arm/v7
           platforms: linux/arm64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          #tags: benjaminferon/docker-tags:latest
+          #tags: ${{ steps.meta.outputs.tags }}
+          tags: benjaminferon/docker-tags:latest
           #labels: ${{ steps.meta.outputs.labels }}
