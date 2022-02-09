@@ -23,12 +23,6 @@ jobs:
            type=semver,pattern={{version}}
            type=semver,pattern={{major}}.{{minor}}
            type=semver,pattern={{major}}
-         labels: |
-           org.opencontainers.image.title=docker-tags
-           org.opencontainers.image.description=Retrieve tag list of a Docker repository
-           org.opencontainers.image.url=https://github.com/benjamin-feron/docker-tags
-           org.opencontainers.image.source=https://github.com/benjamin-feron/docker-tags
-           org.opencontainers.image.licenses=GPLv3
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -49,4 +43,3 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
