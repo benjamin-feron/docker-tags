@@ -1,6 +1,6 @@
 # docker-tags
 
-![logo](images/docker-tags.png "docker-tags logo")
+![logo](https://github.com/benjamin-feron/docker-tags/raw/main/images/docker-tags.png "docker-tags logo")
 
 Retrieve tag list of a Docker repository.
 
