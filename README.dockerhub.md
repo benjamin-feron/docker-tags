@@ -16,7 +16,7 @@ $ docker run benjaminferon/docker-tags <REPOSITORY>
 
 ## All options
 
-```
+```text
   Options:
     -h, --hide-pages   Don't show pagination.
     --help             Show help.
