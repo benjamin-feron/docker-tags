@@ -9,27 +9,28 @@ Retrieve tag list of a Docker repository.
 [https://github.com/benjamin-feron/docker-tags](https://github.com/benjamin-feron/docker-tags)
 
 ## Installation
+
 ```bash
-$ git clone https://github.com/benjamin-feron/docker-tags.git
-$ cd docker-tags
-$ sudo ln -s $PWD/docker-tags /usr/bin/docker-tags
+git clone https://github.com/benjamin-feron/docker-tags.git
+cd docker-tags
+sudo ln -s $PWD/docker-tags /usr/bin/docker-tags
 ```
 
 ## Usage
 
 ```bash
-$ docker-tags <REPOSITORY>
+docker-tags <REPOSITORY>
 ```
 
 ## Usage with Docker
 
 ```bash
-$ docker run --rm benjaminferon/docker-tags <REPOSITORY>
+docker run --rm benjaminferon/docker-tags <REPOSITORY>
 ```
 
 ## All options
 
-```
+```text
 Usage: docker-tags <REPOSITORY>
 
   REPOSITORY:          Name of repository.
