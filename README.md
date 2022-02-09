@@ -37,8 +37,9 @@ Usage: docker-tags <REPOSITORY>
   
   Options:
     -h, --hide-pages   Don't show pagination.
+    -s, --sort         Show last updated tags first.
     --help             Show help.
 
-  Examples:            docker-tags php
+  Examples:            docker-tags -h -s php
                        docker-tags ubuntu/bind9
 ```
