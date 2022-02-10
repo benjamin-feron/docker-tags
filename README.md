@@ -37,7 +37,7 @@ Usage: docker-tags [OPTIONS] <REPOSITORY>
   REPOSITORY: Name of repository.
 
   OPTIONS:
-    -h, --hide-pages
+    -h, --hide-pagination
            Don't show pagination.
     -s, --sort=WORD
             Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
