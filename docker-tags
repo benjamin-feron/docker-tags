@@ -1,7 +1,8 @@
 #!/bin/bash
 
 show_help () {
-  echo "Usage: docker-tags [OPTIONS] <REPOSITORY>
+  echo \
+"Usage: docker-tags [OPTIONS] <REPOSITORY>
 Retrieve tag list of a Docker repository.
 
 REPOSITORY: Name of repository.
@@ -28,11 +29,7 @@ Examples: docker-tags ubuntu/bind9
           docker-tags -hs name php"
 }
 
-# Don't understand why but whether the repository name contain "/" in its name, registry address must be diffrent !
-# If someone has an idea...
-
-REGISTRY_FOR_REPO_WITHOUT_SLASH="https://registry.hub.docker.com"
-REGISTRY_FOR_REPO_WITH_SLASH="https://hub.docker.com"
+DOCKER_URL="https://hub.docker.com"
 FILTER=""
 HIDE_PAGES=0
 PAGE_SIZE=100
@@ -105,12 +102,8 @@ command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
 # TODO
 # Check if $PAGE_COUNT is an integer
 
-# Select registry depending of repository name
-if [[ ! "$REPO" =~ "/" ]]; then
-  url="$REGISTRY_FOR_REPO_WITHOUT_SLASH/v2/repositories/library/$REPO/tags"
-else
-  url="$REGISTRY_FOR_REPO_WITH_SLASH/v2/repositories/$REPO/tags"
-fi
+[[ ! "$REPO" =~ "/" ]] && REPO="library/$REPO"
+url="$DOCKER_URL/v2/repositories/$REPO/tags"
 
 # Get tags count
 count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
