@@ -11,7 +11,7 @@ Retrieve tag list of a Docker repository.
 ## Usage
 
 ```bash
-docker run benjaminferon/docker-tags <REPOSITORY>
+docker run benjaminferon/docker-tags [OPTIONS] <REPOSITORY>
 ```
 
 ## Options
