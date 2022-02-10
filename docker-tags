@@ -7,7 +7,7 @@ show_help () {
   REPOSITORY: Name of repository.
 
   OPTIONS:
-    -h, --hide-pages
+    -h, --hide-pagination
            Don't show pagination.
     -s, --sort=WORD
             Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
@@ -29,11 +29,11 @@ SORT=last_updated
 PAGE_SIZE=100
 HIDE_PAGES=0
 
-options=$(getopt -o hs: -l hide-pages,sort:,help -- "$@")
+options=$(getopt -o hs: -l hide-pagination,sort:,help -- "$@")
 eval set -- "$options"
 while true; do
   case "$1" in
-    -h|--hide-pages)
+    -h|--hide-pagination)
       HIDE_PAGES=1
       shift
       ;;

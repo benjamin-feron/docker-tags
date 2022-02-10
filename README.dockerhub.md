@@ -18,7 +18,7 @@ docker run benjaminferon/docker-tags <REPOSITORY>
 
 ```text
   OPTIONS:
-    -h, --hide-pages
+    -h, --hide-pagination
            Don't show pagination.
     -s, --sort=WORD
             Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
