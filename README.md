@@ -41,7 +41,7 @@ Usage: docker-tags [OPTIONS] <REPOSITORY>
            Don't show pagination.
     -s, --sort=WORD
             Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
-            When sort by name, order is alphabetically inversed to show highest versions first.
+            When sort by name, order is alphabetically inversed to show highest versions numbers first.
             Default is 'last_updated'.
     --help
             Show help.
