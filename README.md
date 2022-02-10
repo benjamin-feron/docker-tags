@@ -28,7 +28,7 @@ docker-tags <REPOSITORY>
 docker run --rm benjaminferon/docker-tags <REPOSITORY>
 ```
 
-## All options
+## Options
 
 ```text
 Usage: docker-tags [OPTIONS] <REPOSITORY>

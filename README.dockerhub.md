@@ -14,7 +14,7 @@ Retrieve tag list of a Docker repository.
 docker run benjaminferon/docker-tags <REPOSITORY>
 ```
 
-## All options
+## Options
 
 ```text
 OPTIONS:
