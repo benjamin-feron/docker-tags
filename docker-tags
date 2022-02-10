@@ -89,6 +89,9 @@ command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
 [ $PAGE_COUNT -lt 0 ] && show_help && throw_error "Page count must be greater than 0"
 [ $SORT != "last_updated" ] && [ $SORT != "name" ] && show_help && throw_error "Bad sort value"
 
+# TODO
+# Check if $PAGE_COUNT is an integer
+
 # Select registry depending of repository name
 if [[ ! "$REPO" =~ "/" ]]; then
   url="$REGISTRY_FOR_REPO_WITHOUT_SLASH/v2/repositories/library/$REPO/tags"
