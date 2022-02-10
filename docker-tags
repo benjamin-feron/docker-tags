@@ -87,7 +87,6 @@ command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
 [ $PAGE_SIZE -lt 0 ] && show_help && throw_error "Page size must be greater than 0"
 [ $PAGE_SIZE -gt 100 ] && show_help && throw_error "Page size must be lower than 100"
 [ $PAGE_COUNT -lt 0 ] && show_help && throw_error "Page count must be greater than 0"
-[ $PAGE_COUNT -gt 100 ] && show_help && throw_error "Page count must be lower than 100"
 [ $SORT != "last_updated" ] && [ $SORT != "name" ] && show_help && throw_error "Bad sort value"
 
 # Select registry depending of repository name
