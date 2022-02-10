@@ -36,8 +36,7 @@ OPTIONS:
          Number of pages to retrieve.
          Default is unlimited.
   -s, --sort=WORD
-         Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
-         When sort by name, order is alphabetically inversed to show highest version numbers first.
+         Sort tags by WORD. Possible values for WORD are 'last_updated', '-last_updated', 'name' or '-name'.
          Default is 'last_updated'.
   --help
          Show help
