@@ -18,6 +18,8 @@ docker run benjaminferon/docker-tags [OPTIONS] <REPOSITORY>
 
 ```text
 OPTIONS:
+  -f, --filter=PATTERN
+         Filter tags. Same syntax as grep -E.
   -h, --hide-pagination
          Don't show pagination.
   -p, --page-size
