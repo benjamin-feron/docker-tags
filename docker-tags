@@ -94,10 +94,7 @@ count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
 page_count=$(((count / PAGE_SIZE) + (count % PAGE_SIZE > 0)))
 
 # Loop through pages
-i=1
-while [ $i -lt $((page_count + 1)) ]
-do
+for (( i=1; i<=$page_count; i++ )); do
    [[ $HIDE_PAGES = 0 ]] && echo "- Page $i/$page_count -"
    curl "$url/?page=$i&page_size=$PAGE_SIZE&ordering=$SORT" 2>/dev/null | jq -r '."results"[]["name"]'
-   ((i+=1))
 done
