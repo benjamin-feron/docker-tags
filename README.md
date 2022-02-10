@@ -28,8 +28,6 @@ docker-tags <REPOSITORY>
 docker run --rm benjaminferon/docker-tags <REPOSITORY>
 ```
 
-[![dockeri.co](https://dockeri.co/image/benjaminferon/docker-tags)](https://hub.docker.com/r/benjaminferon/docker-tags)
-
 ## Options
 
 ```text
