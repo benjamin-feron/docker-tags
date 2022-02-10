@@ -51,7 +51,7 @@ while true; do
       shift 2
       ;;
     -f|--filter)
-      FILTER=$2
+      FILTER="$2"
       shift 2
       ;;
     -h|--hide-pagination)
