@@ -2,7 +2,7 @@
 
 ![logo](https://github.com/benjamin-feron/docker-tags/raw/main/images/docker-tags.png "docker-tags logo")
 
-Retrieve tag list of a Docker repository.
+Retrieve tag list of a Docker repository
 
 ## Repository
 
@@ -14,12 +14,19 @@ Retrieve tag list of a Docker repository.
 docker run benjaminferon/docker-tags [OPTIONS] <REPOSITORY>
 ```
 
+For facility, you can create alias.
+For example, to create an alias for bash :
+
+```bash
+echo 'alias docker-tags="docker run --rm benjaminferon/docker-tags"' >> ~/.bashrc
+```
+
 ## Options
 
 ```text
 OPTIONS:
   -f, --filter=PATTERN
-         Filter tags. Same syntax as grep -E.
+         Filter tags names.
   -h, --hide-pagination
          Don't show pagination.
   -p, --page-size
@@ -29,8 +36,7 @@ OPTIONS:
          Number of pages to retrieve.
          Default is unlimited.
   -s, --sort=WORD
-         Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
-         When sort by name, order is alphabetically inversed to show highest version numbers first.
+         Sort tags by WORD. Possible values for WORD are 'last_updated', '-last_updated', 'name' or '-name'.
          Default is 'last_updated'.
   --help
          Show help
