@@ -1,9 +1,8 @@
 #!/bin/bash
 
 show_help () {
-  echo "Retrieve tag list of a Docker repository.
-  
-  Usage: docker-tags [OPTIONS] <REPOSITORY>
+  echo "Usage: docker-tags [OPTIONS] <REPOSITORY>
+  Retrieve tag list of a Docker repository.
 
   REPOSITORY: Name of repository.
 
@@ -68,7 +67,7 @@ throw_error () {
 command -v curl >/dev/null 2>&1 || throw_error "curl is not installed. Aborting."
 command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
 [ -z $REPO ] && throw_error "Please specify a repository name (ie. docker-tags php)"
-[ $SORT != "last_updated" ] && [ $SORT != "name" ] && throw_error "Bad sort value"
+[ $SORT != "last_updated" ] && [ $SORT != "name" ] && show_help && throw_error "Bad sort value"
 
 # Select registry depending of repository name
 if [[ ! "$REPO" =~ "/" ]]; then
