@@ -2,7 +2,7 @@
 
 ![logo](https://github.com/benjamin-feron/docker-tags/raw/main/images/docker-tags.png "docker-tags logo")
 
-Retrieve tag list of a Docker repository.
+Retrieve tag list of a Docker repository
 
 ## Repository
 
