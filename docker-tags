@@ -29,7 +29,7 @@ Examples: docker-tags ubuntu/bind9
           docker-tags -hs name php"
 }
 
-DOCKER_URL="https://hub.docker.com"
+DOCKER_BASE_URL="https://hub.docker.com"
 FILTER=""
 HIDE_PAGES=0
 PAGE_SIZE=100
@@ -99,14 +99,17 @@ command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
 [ -z "${PAGE_COUNT##*[!0-9]*}" ] && show_help && throw_error "Page count must be a positive integer."
 [ $SORT != "last_updated" ] && [ $SORT != "name" ] && show_help && throw_error "Bad sort value."
 
+# Prefix rpository name if does not contain "/"
 [[ ! "$REPO" =~ "/" ]] && REPO="library/$REPO"
-url="$DOCKER_URL/v2/repositories/$REPO/tags"
+
+# Construct API URL
+url="$DOCKER_BASE_URL/v2/repositories/$REPO/tags"
 
 # Get tags count
-count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
+tags_count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
 
 # Calculate page count
-page_count=$(((count / PAGE_SIZE) + (count % PAGE_SIZE > 0)))
+page_count=$(((tags_count / PAGE_SIZE) + (count % PAGE_SIZE > 0)))
 
 # Loop through pages
 for (( i=1; i<=$page_count; i++ )); do
