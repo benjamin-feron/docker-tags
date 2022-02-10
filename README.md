@@ -22,10 +22,17 @@ sudo ln -s $PWD/docker-tags /usr/bin/docker-tags
 docker-tags <REPOSITORY>
 ```
 
-## Usage with Docker image
+## Usage with Docker
 
 ```bash
 docker run --rm benjaminferon/docker-tags <REPOSITORY>
+```
+
+For facility, you can create alias.
+For example, to create an alias for bash :
+
+```bash
+echo 'alias docker-tags="docker run --rm benjaminferon/docker-tags"' >> ~/.bashrc
 ```
 
 ## Options

@@ -14,6 +14,13 @@ Retrieve tag list of a Docker repository
 docker run benjaminferon/docker-tags [OPTIONS] <REPOSITORY>
 ```
 
+For facility, you can create alias.
+For example, to create an alias for bash :
+
+```bash
+echo 'alias docker-tags="docker run --rm benjaminferon/docker-tags"' >> ~/.bashrc
+```
+
 ## Options
 
 ```text
