@@ -24,11 +24,11 @@ docker-tags <REPOSITORY>
 
 ## Usage with Docker image
 
-[![dockeri.co](https://dockeri.co/image/benjaminferon/docker-tags)](https://hub.docker.com/r/benjaminferon/docker-tags)
-
 ```bash
 docker run --rm benjaminferon/docker-tags <REPOSITORY>
 ```
+
+[![dockeri.co](https://dockeri.co/image/benjaminferon/docker-tags)](https://hub.docker.com/r/benjaminferon/docker-tags)
 
 ## Options
 
