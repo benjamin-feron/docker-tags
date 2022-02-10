@@ -37,6 +37,8 @@ Usage: docker-tags [OPTIONS] <REPOSITORY>
 REPOSITORY: Name of repository.
 
 OPTIONS:
+  -f, --filter=PATTERN
+         Filter tags. Same syntax as grep -E.
   -h, --hide-pagination
          Don't show pagination.
   -p, --page-size
