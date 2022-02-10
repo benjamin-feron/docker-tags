@@ -6,7 +6,23 @@ on:
       - '*.*.*'
 
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Setup Bats
+        uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.5.0
+      -
+        name: Test
+        run: bats -r .
+
   docker-build-push:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       -
