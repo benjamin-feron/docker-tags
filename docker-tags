@@ -9,12 +9,15 @@ show_help () {
   OPTIONS:
     -h, --hide-pagination
            Don't show pagination.
+    -p, --page-size
+           Number of tag per page. Due to Docker registry API limitation, maximum value is 100.
+           Default is 100.
     -s, --sort=WORD
-            Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
-            When sort by name, order is alphabetically inversed to show highest versions numbers first.
-            Default is 'last_updated'.
+           Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
+           When sort by name, order is alphabetically inversed to show highest versions numbers first.
+           Default is 'last_updated'.
     --help
-            Show help.
+           Show help.
 
   Examples: docker-tags ubuntu/bind9
             docker-tags -hs name php"
@@ -29,13 +32,17 @@ SORT=last_updated
 PAGE_SIZE=100
 HIDE_PAGES=0
 
-options=$(getopt -o hs: -l hide-pagination,sort:,help -- "$@")
+options=$(getopt -o hp:s: -l hide-pagination,page-size:sort:,help -- "$@")
 eval set -- "$options"
 while true; do
   case "$1" in
     -h|--hide-pagination)
       HIDE_PAGES=1
       shift
+      ;;
+    -p|--page-size)
+      PAGE_SIZE=$2
+      shift 2
       ;;
     -s|--sort)
       SORT="$2"
@@ -58,7 +65,7 @@ shift
 throw_error () {
   MSG=$1
   STD_MSG="Command stopped"
-  printf "\033[0;31m$MSG\033[0m\n"
+  printf "\033[0;31mError: $MSG\033[0m\n"
   echo "$STD_MSG"
   exit 1
 }
@@ -66,7 +73,11 @@ throw_error () {
 # Requirements
 command -v curl >/dev/null 2>&1 || throw_error "curl is not installed. Aborting."
 command -v jq >/dev/null 2>&1 || throw_error "jq is not installed. Aborting."
+
+# Command arguments checks
 [ -z $REPO ] && throw_error "Please specify a repository name (ie. docker-tags php)"
+[ $PAGE_SIZE -lt 0 ] && show_help && throw_error "Page size must be greater than 0"
+[ $PAGE_SIZE -gt 100 ] && show_help && throw_error "Page size must be lower than 100"
 [ $SORT != "last_updated" ] && [ $SORT != "name" ] && show_help && throw_error "Bad sort value"
 
 # Select registry depending of repository name
