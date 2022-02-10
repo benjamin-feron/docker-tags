@@ -36,6 +36,12 @@ PAGE_SIZE=100
 PAGE_COUNT=0
 HIDE_PAGES=0
 
+# Add support for CTRL+C
+exit_func() {
+  exit 1
+}
+trap exit_func SIGTERM SIGINT
+
 options=$(getopt -o c:hp:s: -l hide-pagination,page-count:page-size:sort:,help -- "$@")
 eval set -- "$options"
 while true; do
