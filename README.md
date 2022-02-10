@@ -42,6 +42,9 @@ OPTIONS:
   -p, --page-size
          Number of tags per page. Due to Docker registry API limitation, maximum value is 100.
          Default is 100.
+  -c, --page-count
+         Number of pages to retrieve.
+         Default is unlimited.
   -s, --sort=WORD
          Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
          When sort by name, order is alphabetically inversed to show highest version numbers first.
