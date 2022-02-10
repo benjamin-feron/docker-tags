@@ -22,7 +22,7 @@ sudo ln -s $PWD/docker-tags /usr/bin/docker-tags
 docker-tags <REPOSITORY>
 ```
 
-## Usage with Docker
+## Usage with Docker image
 
 ```bash
 docker run --rm benjaminferon/docker-tags <REPOSITORY>
