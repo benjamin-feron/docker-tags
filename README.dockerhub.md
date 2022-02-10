@@ -26,7 +26,7 @@ echo 'alias docker-tags="docker run --rm benjaminferon/docker-tags"' >> ~/.bashr
 ```text
 OPTIONS:
   -f, --filter=PATTERN
-         Filter tags. Same syntax as grep -E.
+         Filter tags names.
   -h, --hide-pagination
          Don't show pagination.
   -p, --page-size

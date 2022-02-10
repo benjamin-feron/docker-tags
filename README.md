@@ -45,7 +45,7 @@ REPOSITORY: Name of repository.
 
 OPTIONS:
   -f, --filter=PATTERN
-         Filter tags. Same syntax as grep -E.
+         Filter tags names.
   -h, --hide-pagination
          Don't show pagination.
   -p, --page-size
