@@ -44,7 +44,7 @@ OPTIONS:
          Default is 100.
   -s, --sort=WORD
          Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
-         When sort by name, order is alphabetically inversed to show highest versions numbers first.
+         When sort by name, order is alphabetically inversed to show highest version numbers first.
          Default is 'last_updated'.
   --help
          Show help.
