@@ -34,21 +34,21 @@ docker run --rm benjaminferon/docker-tags <REPOSITORY>
 Usage: docker-tags [OPTIONS] <REPOSITORY>
   Retrieve tag list of a Docker repository.
 
-  REPOSITORY: Name of repository.
+REPOSITORY: Name of repository.
 
-  OPTIONS:
-    -h, --hide-pagination
-           Don't show pagination.
-    -p, --page-size
-           Number of tag per page. Due to Docker registry API limitation, maximum value is 100.
-           Default is 100.
-    -s, --sort=WORD
-           Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
-           When sort by name, order is alphabetically inversed to show highest versions numbers first.
-           Default is 'last_updated'.
-    --help
-           Show help.
+OPTIONS:
+  -h, --hide-pagination
+         Don't show pagination.
+  -p, --page-size
+         Number of tag per page. Due to Docker registry API limitation, maximum value is 100.
+         Default is 100.
+  -s, --sort=WORD
+         Sort tags by WORD. Possible values for WORD are 'last_updated' or 'name'.
+         When sort by name, order is alphabetically inversed to show highest versions numbers first.
+         Default is 'last_updated'.
+  --help
+         Show help.
 
-  Examples: docker-tags ubuntu/bind9
-            docker-tags -hs name php
+Examples: docker-tags ubuntu/bind9
+          docker-tags -hs name php
 ```
