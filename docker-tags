@@ -120,7 +120,6 @@ page_count=$(((tags_count / PAGE_SIZE) + (tags_count % PAGE_SIZE > 0)))
 # Loop through pages
 for (( i=1; i<=$page_count; i++ )); do
   [ $HIDE_PAGES -eq 0 ] && echo "- Page $i/$page_count -"
-  tags=$(curl "$url/?page=$i&page_size=$PAGE_SIZE$ordering$filter" 2>/dev/null | jq -r '."results"[]["name"]')
-  echo "$tags"
+  echo $(curl "$url/?page=$i&page_size=$PAGE_SIZE$ordering$filter" 2>/dev/null | jq -r '."results"[]["name"]')
   [ $PAGE_COUNT -gt 0 ] && [ $PAGE_COUNT -eq $i ] && break
 done
