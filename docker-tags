@@ -110,7 +110,7 @@ url="$DOCKER_BASE_URL/v2/repositories/$REPO/tags"
 
 # Construct filter
 [ "$FILTER" != "" ] && filter="&name=$FILTER" || filter=""
-&
+
 # Get tags count
 tags_count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
 
