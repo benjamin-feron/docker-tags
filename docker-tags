@@ -110,7 +110,7 @@ url="$DOCKER_BASE_URL/v2/repositories/$REPO/tags"
 
 # Construct filter
 [ "$FILTER" != "" ] && filter="&name=$FILTER" || filter=""
-
+&
 # Get tags count
 tags_count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
 
@@ -120,6 +120,7 @@ page_count=$(((tags_count / PAGE_SIZE) + (tags_count % PAGE_SIZE > 0)))
 # Loop through pages
 for (( i=1; i<=$page_count; i++ )); do
   [ $HIDE_PAGES -eq 0 ] && echo "- Page $i/$page_count -"
-  echo "$(curl "$url/?page=$i&page_size=$PAGE_SIZE$ordering$filter" 2>/dev/null | jq -r '."results"[]["name"]')"
+  tags="$(curl "$url/?page=$i&page_size=$PAGE_SIZE$ordering$filter" 2>/dev/null | jq -r '."results"[]?["name"]')"
+  [ "$tags" != "" ] && echo "$tags"
   [ $PAGE_COUNT -gt 0 ] && [ $PAGE_COUNT -eq $i ] && break
 done
