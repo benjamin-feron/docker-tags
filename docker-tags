@@ -151,7 +151,7 @@ for (( i=1; i<=page_count; i++ )); do
   if [[ "$SORT" != "version" && "$SORT" != "-version" ]]; then
     [ $PAGINATION -eq 1 ] && echo "- Page $i/$page_count -"
   elif (( i == 1 )); then
-    echo "Get $tags_count first tags..."
+    echo "Get first $tags_count tags..."
   fi
   tags="$(curl "$url/?page=$i&page_size=$PAGE_SIZE$ordering$filter" 2>/dev/null | jq -r '."results"[]?["name"]')"=
   if [ "$tags" != "" ]; then
