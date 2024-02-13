@@ -24,21 +24,50 @@ echo 'alias docker-tags="docker run --rm benjaminferon/docker-tags"' >> ~/.bashr
 ## Options
 
 ```text
+Usage: docker-tags [OPTIONS] <IMAGE>
+  Retrieve tag list of a Docker image.
+
+IMAGE: Name of Docker image.
+
 OPTIONS:
-  -f, --filter=PATTERN
+  -f, --filter
          Filter tags names.
-  -h, --hide-pagination
-         Don't show pagination.
-  -p, --page-size
+  -p, --pagination
+         Show pagination.
+  -P, --page-size
          Number of tags per page. Due to Docker registry API limitation, maximum value is 100.
          Default is 100.
   -c, --page-count
          Number of pages to retrieve.
          Default is unlimited.
   -s, --sort=WORD
-         Sort tags by WORD. Possible values for WORD are 'last_updated', '-last_updated', 'name' or '-name'.
+         Sort tags by WORD. Possible values for WORD are 'last_updated', '-last_updated', 'name', '-name', 'version' or '-version'.
+         It's almost same as '--sort name' but the sorting is adapted to version formats.
+         For exemple, with these tags on a Docker image : 1.5.7, 1.5.8, 1.5.76, 1.5.81
+         Result with '--sort name' :
+         1.5.81
+         1.5.8
+         1.5.76
+         1.5.7
+         -> Versions numbers are not corretly sorted.
+         Result with '-v or --sort-by-version or --sort=version' :
+         1.5.81
+         1.5.76
+         1.5.8
+         1.5.7
+         -> Sort is correct.
+         Note that when sort is 'version' or '-version', operation is slower cause it is necessary to retrieve tags before to sort them. 300 tags are retrived so there is 3 queries on the API (The API page_size is limited to 100).
+         Incompatible with '-p'.
          Default is 'last_updated'.
-  --help
-         Show help
+  -v, --sort-by-version
+         Sort tags by version from highest to lowest.
+         Is equivalent to : '--sort version'.
+         See '--sort'.
+         Incompatible with '-p'.
+  -h, --help
+         Show help.
+
+Examples: docker-tags ubuntu/bind9
+          docker-tags -pc 2 -s name php
 ```
 

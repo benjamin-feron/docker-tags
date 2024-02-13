@@ -38,10 +38,10 @@ echo 'alias docker-tags="docker run --rm benjaminferon/docker-tags"' >> ~/.bashr
 ## Options
 
 ```text
-Usage: docker-tags [OPTIONS] <REPOSITORY>
-  Retrieve tag list of a Docker repository.
+Usage: docker-tags [OPTIONS] <IMAGE>
+  Retrieve tag list of a Docker image.
 
-REPOSITORY: Name of repository.
+IMAGE: Name of Docker image.
 
 OPTIONS:
   -f, --filter
