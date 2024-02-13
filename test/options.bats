@@ -5,6 +5,13 @@ setup() {
   repo=benjaminferon/docker-tags
 }
 
+@test "help" {
+  help="$($dt --help)"
+
+  help_count=$(echo "$help" | grep -e "^Usage: docker-tags" | wc -l)
+  [ $help_count -eq 1 ]
+}
+
 @test "sort" {
   tags="$($dt --sort=last_updated --page-size=1 --page-count=1 $repo)"
 
@@ -16,6 +23,7 @@ setup() {
   tags="$($dt --sort=-last_updated --page-size=1 --page-count=1 $repo)"
 
   found_latest=$(echo "$tags" | grep -e "$latest_regex" | wc -l)
+  echo "found_latest"
   [ $found_latest -eq 0 ]
 }
 
@@ -34,25 +42,18 @@ setup() {
 }
 
 @test "pagination" {
-  tags="$($dt --sort=-last_updated --page-size=2 --page-count=3 $repo)"
+  tags="$($dt --sort=-last_updated --page-size=2 --page-count=3 --pagination $repo)"
 
   page_regex="^- Page [0-9]\+\/[0-9]\+ -$"
 
   page_label_count=$(echo "$tags" | grep -e "$page_regex" | wc -l)
   [ $page_label_count -eq 3 ]
 
-  tag_count=$(echo "$tags" | grep -ve "$page_regex" | wc -l)
+  tag_count=$(echo "$tags" | grep -ve "$page_regex" | grep -v "Get tags count..." | wc -l)
   [ $tag_count -eq 6 ]
 
-  tags="$($dt --sort=-last_updated --page-size=2 --page-count=3 --hide-pagination $repo)"
+  tags="$($dt --sort=-last_updated --page-size=2 --page-count=3 $repo)"
 
   page_label_count=$(echo "$tags" | grep -e "$page_regex" | wc -l)
   [ $page_label_count -eq 0 ]
-}
-
-@test "help" {
-  help="$($dt --help)"
-
-  help_count=$(echo "$help" | grep -e "Usage: docker-tags" | wc -l)
-  [ $help_count -eq 1 ]
 }
