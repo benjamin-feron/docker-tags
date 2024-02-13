@@ -8,8 +8,8 @@ Retrieve tag list of a Docker repository.
 REPOSITORY: Name of repository.
 
 OPTIONS:
-  -f, --filter=FILTER
-         Filter tags names.
+  -f, --filter
+         Filter on tag names.
   -p, --pagination
          Show pagination.
   -P, --page-size
