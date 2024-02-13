@@ -44,22 +44,22 @@ Usage: docker-tags [OPTIONS] <REPOSITORY>
 REPOSITORY: Name of repository.
 
 OPTIONS:
-  -f, --filter=PATTERN
+  -f, --filter=FILTER
          Filter tags names.
-  -h, --hide-pagination
-         Don't show pagination.
-  -p, --page-size
+  -p, --pagination
+         Show pagination.
+  -P, --page-size
          Number of tags per page. Due to Docker registry API limitation, maximum value is 100.
          Default is 100.
   -c, --page-count
          Number of pages to retrieve.
          Default is unlimited.
   -s, --sort=WORD
-         Sort tags by WORD. Possible values for WORD are 'last_updated', '-last_updated', 'name' or '-name'.
+         Sort tags by WORD. Possible values for WORD are 'last_updated', '-last_updated', 'name', '-name', 'version' or '-version'.
          Default is 'last_updated'.
-  --help
+  -h, --help
          Show help.
 
 Examples: docker-tags ubuntu/bind9
-          docker-tags -hs name php
+          docker-tags -pc 2 -s name php
 ```
