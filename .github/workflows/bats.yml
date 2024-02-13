@@ -15,7 +15,7 @@ jobs:
         name: Setup Bats
         uses: mig4/setup-bats@v1
         with:
-          bats-version: 1.5.0
+          bats-version: 1.10.0
       -
         name: Test
         run: bats -r .
