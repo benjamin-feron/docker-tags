@@ -6,12 +6,14 @@ on:
       - main
     paths:
       - docker-tags
+      - test/options.bats
   pull_request:
     branches:
       - main
       - dev
     paths:
       - docker-tags
+      - test/options.bats
 
 jobs:
   bats:

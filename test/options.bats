@@ -12,21 +12,6 @@ setup() {
   [ $help_count -eq 1 ]
 }
 
-@test "sort" {
-  tags="$($dt --sort=last_updated --page-size=1 --page-count=1 $repo)"
-
-  latest_regex="^latest$"
-
-  found_latest=$(echo "$tags" | grep -e "$latest_regex" | wc -l)
-  [ $found_latest -eq 1 ]
-
-  tags="$($dt --sort=-last_updated --page-size=1 --page-count=1 $repo)"
-
-  found_latest=$(echo "$tags" | grep -e "$latest_regex" | wc -l)
-  echo "found_latest"
-  [ $found_latest -eq 0 ]
-}
-
 @test "filter" {
   tags="$($dt --sort=last_updated --page-size=10 --page-count=1 --filter=latest $repo)"
 
@@ -56,6 +41,21 @@ setup() {
 
   page_label_count=$(echo "$tags" | grep -e "$page_regex" | wc -l)
   [ $page_label_count -eq 0 ]
+}
+
+@test "sort" {
+  tags="$($dt --sort=last_updated --page-size=1 --page-count=1 $repo)"
+
+  latest_regex="^latest$"
+
+  found_latest=$(echo "$tags" | grep -e "$latest_regex" | wc -l)
+  [ $found_latest -eq 1 ]
+
+  tags="$($dt --sort=-last_updated --page-size=1 --page-count=1 $repo)"
+
+  found_latest=$(echo "$tags" | grep -e "$latest_regex" | wc -l)
+  echo "found_latest"
+  [ $found_latest -eq 0 ]
 }
 
 @test "sort-by-version" {

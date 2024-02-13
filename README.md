@@ -65,7 +65,7 @@ OPTIONS:
          1.5.8
          1.5.76
          1.5.7
-         -> Versions numbers are not corretly sorted.
+         -> Sort is not correct.
          Result with '-v or --sort-by-version or --sort=version' :
          1.5.81
          1.5.76
