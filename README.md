@@ -1,3 +1,7 @@
+![main branch Bats test](https://github.com/benjamin-feron/docker-tags/actions/workflows/bats.yml/badge.svg?branch=main)
+![main branch SchellChek test](https://github.com/benjamin-feron/docker-tags/actions/workflows/shellcheck.yml/badge.svg?branch=main)
+![main branch Docker build test](https://github.com/benjamin-feron/docker-tags/actions/workflows/docker-build-push.yml/badge.svg)
+
 # docker-tags
 
 ![logo](https://github.com/benjamin-feron/docker-tags/raw/main/images/docker-tags.png "docker-tags logo")
@@ -7,10 +11,6 @@ Retrieve tag list of a Docker repository with sort options and others
 ## Repository
 
 [https://github.com/benjamin-feron/docker-tags](https://github.com/benjamin-feron/docker-tags)
-
-![main branch Bats test](https://github.com/benjamin-feron/docker-tags/actions/workflows/bats.yml/badge.svg?branch=main)
-![main branch SchellChek test](https://github.com/benjamin-feron/docker-tags/actions/workflows/shellcheck.yml/badge.svg?branch=main)
-![main branch Docker build test](https://github.com/benjamin-feron/docker-tags/actions/workflows/docker-build-push.yml/badge.svg)
 
 ## Installation
 
