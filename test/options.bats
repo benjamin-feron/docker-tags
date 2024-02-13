@@ -57,3 +57,16 @@ setup() {
   page_label_count=$(echo "$tags" | grep -e "$page_regex" | wc -l)
   [ $page_label_count -eq 0 ]
 }
+
+@test "sort-by-version" {
+  tags="$($dt --sort=version --filter=1.7. --quiet $repo)"
+
+  tag_count=$(echo "$tags" | grep -v "Get tags count..." | wc -l)
+  [ $tag_count -eq 9 ]
+
+  first=$(echo "$tags" | head -1 | tail -n 1)
+  second=$(echo "$tags" | head -2 | tail -n 1)
+
+  [ $first == "1.7.10" ]
+  [ $second == "1.7.9" ]
+}

@@ -15,6 +15,8 @@ OPTIONS:
   -P, --page-size
          Number of tags per page. Due to Docker registry API limitation, maximum value is 100.
          Default is 100.
+  -q, --quiet
+         Does not show informations.
   -c, --page-count
          Number of pages to retrieve.
          Default is unlimited.
@@ -54,6 +56,7 @@ FILTER=""
 PAGINATION=0
 PAGE_SIZE=100
 PAGE_COUNT=0
+QUIET=0
 SORT=last_updated
 
 SORT_ALLOWED=("last_updated" "-last_updated" "name" "-name" "version" "-version")
@@ -64,7 +67,7 @@ exit_func() {
 }
 trap exit_func SIGTERM SIGINT
 
-options=$(getopt -o c:f:pP:s:vh -l filter:,pagination,page-count:,page-size:,sort:,help -- "$@")
+options=$(getopt -o c:f:pPq:s:vh -l filter:,pagination,page-count:,page-size:,quiet,sort:,sort-by-version,help -- "$@")
 eval set -- "$options"
 while true; do
   case "$1" in
@@ -83,6 +86,10 @@ while true; do
     -P|--page-size)
       PAGE_SIZE=$2
       shift 2
+      ;;
+    -q|--quiet)
+      QUIET=1
+      shift
       ;;
     -s|--sort)
       SORT="$2"
@@ -162,7 +169,7 @@ filter=""
 # Get tags count
 tags_count=$((PAGE_SIZE * 3))
 if [[ "$SORT" != "version" && "$SORT" != "-version" ]]; then
-  echo "Get tags count..."
+  [ $QUIET -eq 1 ] || echo "Get tags count..."
   tags_count=$(curl "$url/?page=1&page_size=1" 2>/dev/null | jq '."count"')
 fi
 
@@ -173,9 +180,11 @@ page_count=$(((tags_count / PAGE_SIZE) + (tags_count % PAGE_SIZE > 0)))
 allTags=""
 for (( i=1; i<=page_count; i++ )); do
   if [[ "$SORT" != "version" && "$SORT" != "-version" ]]; then
-    [ $PAGINATION -eq 1 ] && echo "- Page $i/$page_count -"
+    if [ $PAGINATION -eq 1 ]; then
+      [ $QUIET -eq 1 ] || echo "- Page $i/$page_count -"
+    fi
   elif (( i == 1 )); then
-    echo "Get first $tags_count tags..."
+    [ $QUIET -eq 1 ] || echo "Get first $tags_count tags..."
   fi
   tags="$(curl "$url/?page=$i&page_size=$PAGE_SIZE$ordering$filter" 2>/dev/null | jq -r '."results"[]?["name"]')"
   if [ "$tags" != "" ]; then

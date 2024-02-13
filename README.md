@@ -51,6 +51,8 @@ OPTIONS:
   -P, --page-size
          Number of tags per page. Due to Docker registry API limitation, maximum value is 100.
          Default is 100.
+  -q, --quiet
+         Does not show informations.
   -c, --page-count
          Number of pages to retrieve.
          Default is unlimited.
