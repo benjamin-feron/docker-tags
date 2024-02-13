@@ -44,7 +44,7 @@ Usage: docker-tags [OPTIONS] <REPOSITORY>
 REPOSITORY: Name of repository.
 
 OPTIONS:
-  -f, --filter=FILTER
+  -f, --filter
          Filter tags names.
   -p, --pagination
          Show pagination.
