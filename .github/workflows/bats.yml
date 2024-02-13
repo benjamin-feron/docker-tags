@@ -1,8 +1,17 @@
 name: Tests with Bats
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+    paths:
+      - docker-tags
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - docker-tags
 
 jobs:
   bats:
